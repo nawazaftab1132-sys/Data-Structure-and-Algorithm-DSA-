@@ -1,0 +1,93 @@
+#include <iostream>
+using namespace std;
+const int n = 5;
+int arr1[n], top1 = -1;
+int arr2[n], top2 = -1;
+void push1()
+{
+    int x;
+    if (top1 == n - 1)
+        cout << "Stack 1 Full\n";
+    else
+    {
+        cout << "Enter number: ";
+        cin >> x;
+        arr1[++top1] = x;
+    }
+}
+
+void pop1()
+{
+    if (top1 == -1)
+        cout << "Stack 1 Empty\n";
+    else if (top2 == n - 1)
+        cout << "Stack 2 Full\n";
+    else
+    {
+        int x = arr1[top1];
+        top1--;
+        arr2[++top2] = x;
+        cout << "Popped and pushed to Stack 2: " << x << endl;
+    }
+}
+
+void display1()
+{
+    cout << "Stack 1: ";
+    for (int i = top1; i >= 0; i--)
+        cout << arr1[i] << " ";
+    cout << endl;
+}
+
+void display2()
+{
+    cout << "Stack 2: ";
+    for (int i = top2; i >= 0; i--)
+        cout << arr2[i] << " ";
+    cout << endl;
+}
+
+int main()
+{
+    int choice;
+
+    do
+    {
+        cout << "\n1. Push in Stack 1\n";
+        cout << "2. Pop Stack 1 to Stack 2\n";
+        cout << "3. Display Stack 1\n";
+        cout << "4. Display Stack 2\n";
+        cout << "5. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice)
+        {
+            case 1:
+                push1();
+                break;
+
+            case 2:
+                pop1();
+                break;
+
+            case 3:
+                display1();
+                break;
+
+            case 4:
+                display2();
+                break;
+
+            case 5:
+                cout << "Exit\n";
+                break;
+
+            default:
+                cout << "Invalid Choice\n";
+        }
+
+    } while (choice != 5);
+
+    return 0;
+}
