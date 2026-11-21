@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+int arr[5];
+int f = -1, r = -1;
+int n = 5;
+void enqueue(int x)
+{
+    if ((r + 1) % n == f)
+        cout << "Overflow\n";
+    else
+    {
+        if (f == -1)
+            f = 0;
+
+        r = (r + 1) % n;
+        arr[r] = x;
+    }
+}
+void dequeue()
+{
+    if (f == -1)
+        cout << "Underflow\n";
+    else
+    {
+        cout << "Deleted: " << arr[f] << endl;
+
+        if (f == r)
+            f = r = -1;
+        else
+            f = (f + 1) % n;
+    }
+}
+    void display()
+{
+    for(int i = f; i != r + 1; i++)
+        cout << arr[i] << " ";
+}
+int main()
+{
+    enqueue(10);
+    enqueue(20);
+    enqueue(30);
+    display();
+
+    dequeue();
+    display();
+
+    return 0;
+}
