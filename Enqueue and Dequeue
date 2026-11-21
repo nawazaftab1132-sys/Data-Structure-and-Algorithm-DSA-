@@ -1,0 +1,61 @@
+#include<iostream>
+using namespace std;
+const int n = 5;
+int arr[n];
+int f = -1;
+int r = -1;
+void enqueue(int value)
+{
+    if(r == n - 1)
+    {
+        cout << "Overflow" << endl;
+    }
+    else
+    {
+        r++;
+        arr[r] = value;
+    }
+}
+void dequeue()
+{
+    if(f == r)
+    {
+        cout << "Underflow" << endl;
+    }
+    else
+    {
+        f++;
+        cout << "Deleted element: " << arr[f] << endl;
+    }
+}
+void display()
+{
+    if(f == r)
+    {
+        cout << "Queue is empty" << endl;
+    }
+    else
+    {
+        for(int i = f + 1; i <= r; i++)
+        {
+            cout << arr[i] << endl;
+        }
+    }
+}
+
+int main()
+{
+    enqueue(10);
+    enqueue(30);
+    enqueue(40);
+
+    cout << "Queue elements:" << endl;
+    display();
+
+    dequeue();
+
+    cout << "After dequeue:" << endl;
+    display();
+
+    return 0;
+}
